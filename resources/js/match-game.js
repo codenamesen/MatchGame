@@ -1,9 +1,4 @@
-var MatchGame = {
-  generateCardValues: function(){
-    var Array = [];
-    return Array;
-  }
-};
+var MatchGame = {};
 
 /*
   Sets up a new game after HTML document has loaded.
@@ -15,7 +10,15 @@ var MatchGame = {
  */
 
 MatchGame.generateCardValues = function () {
-
+  var cardValues = [];
+  var j = 1;
+  for(var i = 0; i < 16; i++)  {    
+    cardValues.push(j);
+    cardValues.push(j);
+    j++;
+    i++;
+  }
+  return cardValues;
 };
 
 /*
