@@ -12,7 +12,7 @@ var MatchGame = {};
 MatchGame.generateCardValues = function () {
   var cardValues = [];
   var j = 1;
-  for(var i = 0; i < 16; i++)  {    
+  for(var i = 0; i < 16; i++) {
     cardValues.push(j);
     cardValues.push(j);
     j++;
@@ -27,7 +27,12 @@ MatchGame.generateCardValues = function () {
 */
 
 MatchGame.renderCards = function(cardValues, $game) {
+  $game = $('<div><h1>New</h1></div>');
+  var $card = {};
 
+  for(var i = 0; i < 16; i++){
+    $card.value = cardValues[i];
+  }
 };
 
 /*
