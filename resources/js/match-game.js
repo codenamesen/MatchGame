@@ -10,15 +10,20 @@ var MatchGame = {};
  */
 
 MatchGame.generateCardValues = function () {
-  var cardValues = [];
-  var j = 1;
-  for(var i = 0; i < 16; i++) {
-    cardValues.push(j);
-    cardValues.push(j);
-    j++;
-    i++;
+  var orderedCardValues = [];
+  for(var i = 1; i <= 8; i++) {
+    orderedCardValues.push(i);
+    orderedCardValues.push(i);
   }
-  return cardValues;
+
+  var randomCardValues = [];
+  while(orderedCardValues.length > 0){
+    var randomIndex = Math.floor(Math.random() * orderedCardValues.length);
+    randomCardValues.push(orderedCardValues[randomIndex]);
+    orderedCardValues.splice(randomIndex, 1);
+  }
+
+  return randomCardValues;
 };
 
 /*
@@ -27,12 +32,7 @@ MatchGame.generateCardValues = function () {
 */
 
 MatchGame.renderCards = function(cardValues, $game) {
-  $game = $('<div><h1>New</h1></div>');
-  var $card = {};
 
-  for(var i = 0; i < 16; i++){
-    $card.value = cardValues[i];
-  }
 };
 
 /*
