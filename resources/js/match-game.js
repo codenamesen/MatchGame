@@ -1,3 +1,6 @@
+$(document).ready(function(){
+  MatchGame.renderCards(MatchGame.generateCardValues(), $('#game'));
+});
 var MatchGame = {};
 
 /*
@@ -32,7 +35,15 @@ MatchGame.generateCardValues = function () {
 */
 
 MatchGame.renderCards = function(cardValues, $game) {
-
+  var cardColor = ['hsl(25, 65%, 85%)', 'hsl(55, 65%, 85%)', 'hsl(90, 65%, 85%)', 'hsl(160, 65%, 85%)', 'hsl(220, 65%, 85%)', 'hsl(265, 65%, 85%)', 'hsl(310, 65%, 85%)', 'hsl(360, 65%, 85%)'];
+  $game.empty();
+  for(var i = 0; i < cardValues.length; i++) {
+    var $card = $('<div class="col-xs-3 card"></div>');
+    $card.data('value', cardValues[i]);
+    $card.data('flipped', false);
+    $card.data('color', cardColor[$card.data('value') - 1]);
+    $game.append($card);
+  }
 };
 
 /*
