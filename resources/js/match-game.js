@@ -1,12 +1,12 @@
-$(document).ready(function(){
-  MatchGame.renderCards(MatchGame.generateCardValues(), $('#game'));
-});
 var MatchGame = {};
 
 /*
   Sets up a new game after HTML document has loaded.
   Renders a 4x4 board of cards.
 */
+$(document).ready(function(){
+  MatchGame.renderCards(MatchGame.generateCardValues(), $('#game'));
+});
 
 /*
   Generates and returns an array of matching card values.
@@ -35,7 +35,8 @@ MatchGame.generateCardValues = function () {
 */
 
 MatchGame.renderCards = function(cardValues, $game) {
-  var cardColor = ['hsl(25, 65%, 85%)', 'hsl(55, 65%, 85%)', 'hsl(90, 65%, 85%)', 'hsl(160, 65%, 85%)', 'hsl(220, 65%, 85%)', 'hsl(265, 65%, 85%)', 'hsl(310, 65%, 85%)', 'hsl(360, 65%, 85%)'];
+  $game.data({flippedArray: []});
+  var cardColor = ['hsl(25, 85%, 65%)', 'hsl(55, 85%, 65%)', 'hsl(90, 85%, 65%)', 'hsl(160, 85%, 65%)', 'hsl(220, 85%, 65%)', 'hsl(265, 85%, 65%)', 'hsl(310, 85%, 65%)', 'hsl(360, 85%, 65%)'];
   $game.empty();
   for(var i = 0; i < cardValues.length; i++) {
     var $card = $('<div class="col-xs-3 card"></div>');
@@ -44,6 +45,11 @@ MatchGame.renderCards = function(cardValues, $game) {
     $card.data('color', cardColor[$card.data('value') - 1]);
     $game.append($card);
   }
+
+  $('.card').click(function() {
+    MatchGame.flipCard($(this), $game);
+  });
+
 };
 
 /*
@@ -52,5 +58,31 @@ MatchGame.renderCards = function(cardValues, $game) {
  */
 
 MatchGame.flipCard = function($card, $game) {
+  if($card.data('flipped') === false){
+    $card.css('background-color', $card.data('color'));
+    $card.text($card.data('value'));
+    $card.data('flipped', true);
+    $game.data('flippedArray').push($card);
+
+    /*while ($game.data('flippedArray').length === 2) {
+      if($game.data('flippedArray[0]').text() === $game.data('flippedArray[1]').text) {
+        $game.data('flippedArray[0]').css('background-color', rgb(153,153,153));
+        $game.data('flippedArray[0]').css('color', rgb(204, 204, 204));
+        $game.data('flippedArray[1]').css('background-color', rgb(153,153,153));
+        $game.data('flippedArray[1]').css('color', rgb(204, 204, 204));
+      } else {
+        $game.data('flippedArray[0]').text('');
+        $game.data('flippedArray[0]').css('background-color',rgb(32, 64, 86));
+        $game.data('flippedArray[0]').data('flipped', false);
+        $game.data('flippedArray[1]').text('');
+        $game.data('flippedArray[1]').css('background-color',rgb(32, 64, 86));
+        $game.data('flippedArray[1]').data('flipped', false);
+      }
+    }
+    $game.data({flippedArray: []});*/
+
+  } else {
+    return;
+  }
 
 };
