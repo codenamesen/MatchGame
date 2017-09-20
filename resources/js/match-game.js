@@ -76,12 +76,20 @@ MatchGame.flipCard = function($card, $game) {
       $flippedCards[1].css('color', 'rgb(204, 204, 204)');
       $flippedCards[1].css('background-color', 'rgb(153, 153, 153)');
     } else {
-      $flippedCards[0].css('background-color', 'rgb(32, 64, 86)');
+      window.setTimeout(function(){
+        $flippedCards[0].css('background-color', 'rgb(32, 64, 86)');
+        $flippedCards[0].text('');
+        $flippedCards[0].data('flipped', false);
+        $flippedCards[1].css('background-color', 'rgb(32, 64, 86)');
+        $flippedCards[1].text('');
+        $flippedCards[1].data('flipped', false);
+      }, 350);
+      /*$flippedCards[0].css('background-color', 'rgb(32, 64, 86)');
       $flippedCards[0].text('');
       $flippedCards[0].data('flipped', false);
       $flippedCards[1].css('background-color', 'rgb(32, 64, 86)');
       $flippedCards[1].text('');
-      $flippedCards[1].data('flipped', false);
+      $flippedCards[1].data('flipped', false);*/
     }
     $game.data('flippedArray', []);
   } else {
