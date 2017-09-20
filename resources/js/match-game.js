@@ -25,7 +25,6 @@ MatchGame.generateCardValues = function () {
     randomCardValues.push(orderedCardValues[randomIndex]);
     orderedCardValues.splice(randomIndex, 1);
   }
-
   return randomCardValues;
 };
 
@@ -49,7 +48,6 @@ MatchGame.renderCards = function(cardValues, $game) {
   $('.card').click(function() {
     MatchGame.flipCard($(this), $('#game'));
   });
-
 };
 
 /*
@@ -84,12 +82,7 @@ MatchGame.flipCard = function($card, $game) {
         $flippedCards[1].text('');
         $flippedCards[1].data('flipped', false);
       }, 350);
-      /*$flippedCards[0].css('background-color', 'rgb(32, 64, 86)');
-      $flippedCards[0].text('');
-      $flippedCards[0].data('flipped', false);
-      $flippedCards[1].css('background-color', 'rgb(32, 64, 86)');
-      $flippedCards[1].text('');
-      $flippedCards[1].data('flipped', false);*/
+
     }
     $game.data('flippedArray', []);
   } else {
